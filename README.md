@@ -1,10 +1,18 @@
-# My Personal Project
+# Pokemon Lite
+**CPSC 210 Term Project**
 
-## A subtitle
+## About the Project
+I owe my interest in Computer Science to video games. 
 
-A *bulleted* list:
-- item 1
-- item 2
-- item 3
+My first experiences with programming started out because of a desire 
+to learn how to make my own video games. From there, one thing led to another,
+and now, I'm hoping to pursue Computer Science and software development as a full-time career. 
+With that said, it thus felt very fitting that for my personal project in this course, 
+I would fulfill my younger self's dreams and create a simple video game. 
+With *Pokemon Platinum* on the *3DS* being one of the first games I played as a kid, it 
+felt fitting that I go full-circle and choose the Pokemon franchise as my inspiration for this project.
 
-An example of text with **bold** and *italic* fonts.  
+This project is an offline, single-player video game that will aim to recreate some of the
+key game mechanics and gameplay loop of the world-renowned Pokemon franchise. The game will be designed
+to be playable on desktop, with casual gamers as the target demographic of users in mind. In particular, I hope that I, as well some of my friends, will be able to play
+the finished product and find much enjoyment from it.
