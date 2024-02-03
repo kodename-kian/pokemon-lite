@@ -16,3 +16,13 @@ This project is an offline, single-player video game that will aim to recreate s
 key game mechanics and gameplay loop of the world-renowned Pokemon franchise. The game will be designed
 to be playable on desktop, with casual gamers as the target demographic of users in mind. In particular, I hope that I, as well some of my friends, will be able to play
 the finished product and find much enjoyment from it.
+
+## User Stories
+- As a user, I want to be able to catch Pokemon and **add** it to my team.
+- As a user, I want to be able to **view** all the Pokemon on my team.
+- As a user, I want to be able to **release** a Pokemon from my team.
+- As a user, I want to be able to **move** around the game map and encounter random Pokemon.
+- As a user, I want to be able to **battle** other Pokemon using the Pokemon on my team.
+- As a user, I want to be able to **heal** the Pokemon on my team.
+- As a user, I want to be able to **save** my progress in-game.
+- As a user, I want to be able to start over and **reset** my game.
