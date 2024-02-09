@@ -18,11 +18,15 @@ to be playable on desktop, with casual gamers as the target demographic of users
 the finished product and find much enjoyment from it.
 
 ## User Stories
+### Phase 1 User Stories
 - As a user, I want to be able to catch Pokemon and **add** it to my team.
 - As a user, I want to be able to **view** all the Pokemon on my team.
 - As a user, I want to be able to **release** a Pokemon from my team.
+- As a user, I want to be able to **set nicknames** for my Pokemon and **teach** them new moves.
+### Phase 2 User Stories
+- As a user, I want to be able to **save** my progress in-game.
+- As a user, I want to be able to start over and **reset** my game.
+### Phase 3 User Stories *(to be revised)*
 - As a user, I want to be able to **move** around the game map and encounter random Pokemon.
 - As a user, I want to be able to **battle** other Pokemon using the Pokemon on my team.
 - As a user, I want to be able to **heal** the Pokemon on my team.
-- As a user, I want to be able to **save** my progress in-game.
-- As a user, I want to be able to start over and **reset** my game.
