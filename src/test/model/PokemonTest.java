@@ -59,8 +59,8 @@ public class PokemonTest {
         List<String> expectedOutput = new ArrayList<String>();
         expectedOutput.add("Dark Beam");
         expectedOutput.add("Normal Punch");
-        expectedOutput.add("Water Kick");
         expectedOutput.add("Fire Slash");
+        expectedOutput.add("Water Kick");
 
         assertEquals(expectedOutput, p2.getMoveNames());
         assertEquals(m2, p2.getMove(2));

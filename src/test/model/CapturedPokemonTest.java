@@ -36,15 +36,15 @@ public class CapturedPokemonTest {
 
         cp2.setNickname("Bobby");
 
-        assertEquals("Bobby (Squritle)", cp1.getDisplayName());
-        assertEquals("Bobby", cp1.getNickname());
+        assertEquals("Bobby (Squirtle)", cp2.getDisplayName());
+        assertEquals("Bobby", cp2.getNickname());
     }
 
     @Test
     public void setNicknameTestClear() {
         cp2.setNickname("");
 
-        assertEquals("Squirtle", cp1.getDisplayName());
-        assertEquals("", cp1.getNickname());
+        assertEquals("Squirtle", cp2.getDisplayName());
+        assertEquals("", cp2.getNickname());
     }
 }
