@@ -13,14 +13,19 @@ public class Team {
 
     // MODIFIES: this
     // EFFECTS: adds a Pokemon to team
-    public void addPokemon(Pokemon p) {
+    public void addPokemon(CapturedPokemon p) {
         // stub
     }
 
+    // REQUIRES: index < getTeamSize()
     // MODIFIES: this
     // EFFECTS: removes a Pokemon from team given index
     public void removePokemon(int index) {
         // stub
+    }
+
+    public CapturedPokemon getPokemon(int index) {
+        return new CapturedPokemon("", "");
     }
 
     // EFFECTS: returns an array of display names for all Pokemon in team

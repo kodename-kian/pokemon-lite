@@ -7,6 +7,11 @@ public class CapturedPokemon extends Pokemon {
         super(species, type);
     }
 
+    // EFFECTS: returns nickname of captured pokemon
+    public String getNickname() {
+        return ""; //stub
+    }
+
     // MODIFIES: this
     // EFFECTS: sets a nickname for Pokemon
     public void setNickname(String s) {

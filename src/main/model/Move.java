@@ -13,4 +13,10 @@ public class Move {
     public String getDisplayName() {
         return "";
     }
+
+    // EFFECTS: returns true if both moves have the same display name
+    //          false otherwise
+    public boolean isEqual(Move m) {
+        return true; //stub
+    }
 }

@@ -12,6 +12,31 @@ public class Pokemon {
         // stub
     }
 
+    // EFFECTS: returns species of Pokemon for display
+    public String getDisplayName() {
+        return "";
+    }
+
+    public String getType() {
+        return ""; //stub
+    }
+
+    // EFFECTS: returns an array of display names for all moves of Pokemon
+    public List<String> getMoveNames() {
+        return new ArrayList<String>();
+    }
+
+    // EFFECTS: returns number of moves in moves array
+    public int getNumMoves() {
+        return 0; //stub
+    }
+
+    // REQUIRES: 0 <= index < getNumMoves()
+    // EFFECTS: returns the Move at given index
+    public Move getMove(int index) {
+        return new Move("", "");
+    }
+
     // MODIFIES: this
     // EFFECTS: adds move to list of moves
     public void learnMove(Move m){
@@ -24,13 +49,4 @@ public class Pokemon {
         return new CapturedPokemon("", "");
     }
 
-    // EFFECTS: returns species of Pokemon for display
-    public String getDisplayName() {
-        return "";
-    }
-
-    // EFFECTS: returns an array of display names for all moves of Pokemon
-    public List<String> getMoveNames() {
-        return new ArrayList<String>();
-    }
 }
