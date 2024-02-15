@@ -20,8 +20,8 @@ public class Generator {
 
     // REQUIRES: file paths lead to valid files
     // EFFECTS: instantiates lists read from given file paths
-    public Generator() throws IOException {
-        allPokemon = Files.readAllLines(Path.of("data/pokemon"));
+    public Generator(String generation) throws IOException {
+        allPokemon = Files.readAllLines(Path.of("data/" + generation));
         allTypes = Files.readAllLines(Path.of("data/types"));
         allMoves = Files.readAllLines(Path.of("data/moves"));
     }

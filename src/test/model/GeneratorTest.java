@@ -9,26 +9,38 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class GeneratorTest {
     Generator g1;
+    Generator g2;
 
-    @BeforeEach
-    public void setup() {
+    @Test
+    public void generatorTestException(){
         try {
-            g1 = new Generator();
+            g1 = new Generator("generation7");
+            fail("An exception should be returned!");
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            // do nothing-- this is the intended behavior
         }
     }
 
     @Test
     public void generatePokemonTest() {
-        Pokemon p = g1.generatePokemon();
+        try {
+            g2 = new Generator("generation1");
+        } catch (IOException e) {
+            fail("This code should not throw an exception!");
+        }
+        Pokemon p = g2.generatePokemon();
         assertEquals("model.Pokemon", p.getClass().getName());
         assertEquals(2, p.getNumMoves());
     }
 
     @Test
     public void generateMoveTest() {
-        Move m = g1.generateMove();
+        try {
+            g2 = new Generator("generation1");
+        } catch (IOException e) {
+            fail("This code should not throw an exception!");
+        }
+        Move m = g2.generateMove();
         assertEquals("model.Move", m.getClass().getName());
         assertEquals("java.lang.String", m.getDisplayName().getClass().getName());
     }
