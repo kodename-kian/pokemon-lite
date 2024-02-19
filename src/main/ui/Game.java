@@ -92,22 +92,26 @@ public class Game {
     // EFFECTS: facilitates the usage of the Pokemon Team Menu
     private void teamMenu() {
 
-        ui.printTeamMenuUI(team);
+        boolean loopTeamMenu = true;
 
-        int choice = 0;
+        while (loopTeamMenu) {
+            ui.printTeamMenuUI(team);
 
-        try {
-            choice = input.getInputInt("Enter the number of your choice: ", 1, 3);
-        } catch (BadInputException e) {
-            setStatus("Something's wrong with your input! Please try again.");
-            teamMenu();
-        }
+            int choice = 0;
 
-        if (choice == 3) {
-            status = "Successfully returned to main menu.";
-        } else {
-            editOrReleaseMenu(choice);
-            teamMenu();
+            try {
+                choice = input.getInputInt("Enter the number of your choice: ", 1, 3);
+            } catch (BadInputException e) {
+                setStatus("Something's wrong with your input! Please try again.");
+                continue;
+            }
+
+            if (choice == 3) {
+                loopTeamMenu = false;
+                status = "Successfully returned to main menu.";
+            } else {
+                editOrReleaseMenu(choice);
+            }
         }
     }
 
