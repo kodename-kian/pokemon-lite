@@ -3,7 +3,7 @@ package model;
 import java.util.ArrayList;
 import java.util.List;
 
-// represents a team of Pokemon
+// Represents a team of Pokemon
 public class Team {
 
     private List<CapturedPokemon> team;
@@ -19,7 +19,7 @@ public class Team {
         team.add(p);
     }
 
-    // REQUIRES: index < getTeamSize()
+    // REQUIRES: index < getTeamSize() : input sanitized in ui to satisfy requirement
     // MODIFIES: this
     // EFFECTS: removes a Pokemon from team given index
     public void removePokemon(int index) {

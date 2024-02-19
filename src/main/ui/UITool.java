@@ -4,6 +4,7 @@ import model.*;
 
 import java.util.List;
 
+// UI Tool which handles printing of console information, instructions, and ui
 public class UITool {
 
     private static final String HEADER =    "========= POKEMON LITE =========";
@@ -17,13 +18,16 @@ public class UITool {
         this.game = g;
     }
 
-    // TEMPORARY METHODS FOR CONSOLE USE
+    // TEMPORARY METHOD FOR CONSOLE USE
+    // EFFECTS: "clears" screen by printing several empty lines
     private void clearScreen() {
         for (int i = 0; i < 10; i++) {
             System.out.println();
         }
     }
 
+    // TEMPORARY METHOD FOR CONSOLE USE
+    // EFFECTS: prints game.getStatus() and clears the value
     private void flushStatus() {
         String status = game.getStatus();
         if (!status.equals("")) {
@@ -32,18 +36,25 @@ public class UITool {
         }
     }
 
-    // OUTPUT METHODS
+    // EFFECTS: lists all the Pokemon in the team,
+    //          or reports that team is empty
     private void printTeamInfo(Team team) {
-        System.out.println("My team of Pokemon!");
 
-        List<String> displayNames = team.getDisplayNames();
-        for (int i = 0; i < team.getTeamSize(); i++) {
-            System.out.println((i + 1) + ". " + displayNames.get(i));
+        if (team.getTeamSize() == 0) {
+            System.out.println("Team is currently empty!");
+        } else {
+            System.out.println("My team of Pokemon!");
+
+            List<String> displayNames = team.getDisplayNames();
+            for (int i = 0; i < team.getTeamSize(); i++) {
+                System.out.println((i + 1) + ". " + displayNames.get(i));
+            }
         }
 
         System.out.println();
     }
 
+    // EFFECTS: displays name, type, and moves of Pokemon on team
     private void printPokemonInfo(CapturedPokemon p) {
         System.out.println("Currently viewing: " + p.getDisplayName());
         System.out.println("Type: " + p.getType());
@@ -51,12 +62,12 @@ public class UITool {
         System.out.println("Moves:");
         List<String> moveNames = p.getMoveNames();
         for (int i = 0; i < p.getNumMoves(); i++) {
-            System.out.println(i + "." + moveNames.get(i));
+            System.out.println((i + 1) + ". " + moveNames.get(i));
         }
         System.out.println();
     }
 
-
+    // EFFECTS: prints the console menu ui for a wild Pokemon encounter
     public void printEncounterUI(Pokemon p) {
         clearScreen();
         flushStatus();
@@ -69,6 +80,7 @@ public class UITool {
         System.out.println("2. Flee");
     }
 
+    // EFFECTS: prints the console menu ui for viewing a Pokemon on the team
     public void printPokemonMenuUI(CapturedPokemon p) {
         clearScreen();
         flushStatus();
@@ -84,6 +96,7 @@ public class UITool {
         System.out.println("3. Return to Team Menu");
     }
 
+    // EFFECTS: prints the console menu ui for viewing Team of Pokemon
     public void printTeamMenuUI(Team team) {
         clearScreen();
         flushStatus();
@@ -99,6 +112,7 @@ public class UITool {
         System.out.println("3. Return to Main Menu");
     }
 
+    // EFFECTS: prints the console menu ui for the Main Menu of the game
     public void printMainUI() {
         clearScreen();
         flushStatus();
@@ -106,7 +120,7 @@ public class UITool {
         System.out.println(HEADER);
         System.out.println("Select an option:");
         System.out.println("1. Encounter a new Pokemon");
-        System.out.println("2. Open TEAM menu");
+        System.out.println("2. Open Team menu");
         System.out.println("3. Exit game");
     }
 }

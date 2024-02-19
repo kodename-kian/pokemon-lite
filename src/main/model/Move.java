@@ -6,7 +6,6 @@ public class Move {
     private String type;
     private String attack;
 
-    // REQUIRES: type, attack are non-empty Strings
     // EFFECTS: constructs a move with specified type and attack
     public Move(String type, String attack) {
         this.type = type;

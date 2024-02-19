@@ -1,5 +1,6 @@
 package model;
 
+// Represents a Pokemon that belongs to a player's team
 public class CapturedPokemon extends Pokemon {
 
     private String nickname;
@@ -22,6 +23,7 @@ public class CapturedPokemon extends Pokemon {
     }
 
     // EFFECTS: returns combined String of nickname and species
+    //          nickname = "" means that no nickname is currently set
     @Override
     public String getDisplayName() {
         if (this.nickname.equals("")) {

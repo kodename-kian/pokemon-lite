@@ -3,7 +3,7 @@ package model;
 import java.util.ArrayList;
 import java.util.List;
 
-// represents a Pokemon with a species, type, health, and list of moves
+// Represents a Pokemon with a species, type, health, and list of moves
 public class Pokemon {
 
     private String species;

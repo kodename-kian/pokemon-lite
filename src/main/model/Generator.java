@@ -6,7 +6,7 @@ import java.nio.file.Path;
 import java.util.List;
 import java.util.Random;
 
-// a helper class to generate new, random Pokemon and moves
+// A helper class to generate new, random Pokemon and moves
 public class Generator {
     private static final int MAX_POKEMON = 151;
     private static final int MAX_TYPES = 18;

@@ -56,9 +56,9 @@ public class Game {
 
         if (choice == 1) {
             team.addPokemon(p.capture());
-            status = "SUCCESSFULLY CAUGHT " + p.getDisplayName() + "!";
+            status = "Successfully caught " + p.getDisplayName() + "!";
         } else if (choice == 2) {
-            status = "YOU'VE SUCCESSFULLY FLED!";
+            status = "You've successfully fled!";
         }
     }
 
@@ -77,13 +77,14 @@ public class Game {
 
         if (choice == 1) {
             String newName = input.getInputString("Enter a new nickname: ");
-            status = "POKEMON RENAMED TO " + newName;
             p.setNickname(newName);
+            status = "Pokemon name successfully updated: " + p.getDisplayName();
         } else if (choice == 2) {
-            status = "POKEMON HAS LEARNED NEW MOVE";
-            p.learnMove(generator.generateMove());
+            Move newMove = generator.generateMove();
+            p.learnMove(newMove);
+            status = "Move successfully learned: " + newMove.getDisplayName();
         } else if (choice == 3) {
-            status = "RETURNED TO MAIN MENU";
+            status = "Returned to Main Menu!";
         }
 
     }
@@ -126,7 +127,7 @@ public class Game {
         if (choice == 1) {
             pokemonMenu(team.getPokemon(index - 1));
         } else if (choice == 2) {
-            status = team.getDisplayNames().get(index - 1) + " has been released from the team!";
+            status = team.getDisplayNames().get(index - 1) + " has been released from the team.";
             team.removePokemon(index - 1);
         }
     }
@@ -134,25 +135,28 @@ public class Game {
     // EFFECTS: facilitates the primary gameplay loop
     public void play() {
 
-        ui.printMainUI();
+        boolean loopGame = true;
 
-        int choice = 0;
+        while (loopGame) {
+            ui.printMainUI();
 
-        try {
-            choice = input.getInputInt("Enter the number of your choice: ", 1, 3);
-        } catch (BadInputException e) {
-            setStatus("Something's wrong with your input! Please try again.");
-            play();
+            int choice = 0;
+
+            try {
+                choice = input.getInputInt("Enter the number of your choice: ", 1, 3);
+            } catch (BadInputException e) {
+                setStatus("Something's wrong with your input! Please try again.");
+                continue;
+            }
+
+            if (choice == 1) {
+                encounter(generator.generatePokemon());
+            } else if (choice == 2) {
+                teamMenu();
+            } else if (choice == 3) {
+                loopGame = false;
+            }
+
         }
-
-        if (choice == 1) {
-            encounter(generator.generatePokemon());
-        } else if (choice == 2) {
-            teamMenu();
-        } else if (choice == 3) {
-            return;
-        }
-
-        play();
     }
 }
