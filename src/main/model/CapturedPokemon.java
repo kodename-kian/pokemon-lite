@@ -10,7 +10,7 @@ public class CapturedPokemon extends Pokemon {
         this.nickname = "";
     }
 
-    // EFFECTS: returns nickname of captured generation1
+    // EFFECTS: returns nickname of captured Pokemon
     public String getNickname() {
         return this.nickname; //stub
     }

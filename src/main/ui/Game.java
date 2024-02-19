@@ -1,158 +1,152 @@
 package ui;
 
-import java.util.Scanner;
+import model.*;
+import ui.exceptions.BadInputException;
 
+import java.io.IOException;
+
+// Primary class to run the game
+// Specifics of input & output handling abstracted to helper classes
 public class Game {
-    private static final String header =    "========= POKEMON LITE =========";
-    private static final String encounter = "=========  ENCOUNTER   =========";
-    private static final String team =      "=========   MY TEAM    =========";
-    private static final String pokemon =   "=========  MY POKEMON  =========";
 
-    private final Scanner input;
     private String status;
+    private final UITool ui;
+    private final InputTool input;
 
+    private final Team team;
+    private final Generator generator;
+
+    // EFFECTS: initializes all the required fields
     public Game() {
-        input = new Scanner(System.in);
+        input = new InputTool();
+        ui = new UITool(this);
         status = "";
-    }
 
-    // INPUT METHODS
-    private int getInputInt() {
-        System.out.print("Enter the number of your choice: ");
-        return input.nextInt();
-    }
-
-    private String getInputString() {
-        System.out.print("Enter string: ");
-        return input.next();
-    }
-
-    // OUTPUT METHODS
-    private void printTeamInfo() {
-        System.out.println("My team of Pokemon!");
-        System.out.println("[POKEMON WILL GO HERE]");
-        System.out.println();
-    }
-
-    private void printPokemonInfo() {
-        System.out.println("Currently viewing: [POKEMON]");
-        System.out.println();
-    }
-
-    // TEMPORARY METHODS FOR CONSOLE USE
-    private void clearScreen() {
-        for (int i = 0; i < 10; i++) {
-            System.out.println();
+        team = new Team();
+        try {
+            generator = new Generator("generation1");
+        } catch (IOException e) {
+            throw new RuntimeException(e); //should never happen!
         }
     }
 
-    private void flushStatus() {
-        if (!status.equals("")) {
-            System.out.println(status);
-            status = "";
-        }
+    // EFFECTS: getter for status
+    public String getStatus() {
+        return status;
     }
 
-    // PRIMARY METHODS
-    private void encounter() {
-        clearScreen();
-        flushStatus();
+    // EFFECTS: setter for status
+    public void setStatus(String status) {
+        this.status = status;
+    }
 
-        System.out.println(header);
-        System.out.println(encounter);
-        System.out.println("You've encountered a wild [POKEMON]!");
-        System.out.println("Select an option:");
-        System.out.println("1. Catch Pokemon");
-        System.out.println("2. Flee");
+    // EFFECTS: facilitates encounter with a wild Pokemon
+    private void encounter(Pokemon p) {
 
-        int choice = getInputInt();
+        ui.printEncounterUI(p);
+
+        int choice = 0;
+
+        try {
+            choice = input.getInputInt("Enter the number of your choice: ", 1, 2);
+        } catch (BadInputException e) {
+            setStatus("Something's wrong with your input! Please try again.");
+            encounter(p);
+        }
 
         if (choice == 1) {
-            status = "CATCH FAILED!";
+            team.addPokemon(p.capture());
+            status = "SUCCESSFULLY CAUGHT " + p.getDisplayName() + "!";
         } else if (choice == 2) {
             status = "YOU'VE SUCCESSFULLY FLED!";
-            return;
         }
-
-        encounter();
     }
 
-    private void pokemonMenu() {
-        clearScreen();
-        flushStatus();
+    private void pokemonMenu(CapturedPokemon p) {
 
-        System.out.println(header);
-        System.out.println(pokemon);
+        ui.printPokemonMenuUI(p);
 
-        printPokemonInfo();
+        int choice = 0;
 
-        System.out.println("Select an option:");
-        System.out.println("1. Rename Pokemon");
-        System.out.println("2. Teach Pokemon New Move");
-        System.out.println("3. Return to Team Menu");
-
-        int choice = getInputInt();
+        try {
+            choice = input.getInputInt("Enter the number of your choice: ", 1, 3);
+        } catch (BadInputException e) {
+            setStatus("Something's wrong with your input! Please try again.");
+            pokemonMenu(p);
+        }
 
         if (choice == 1) {
-            String newName = getInputString();
+            String newName = input.getInputString("Enter a new nickname: ");
             status = "POKEMON RENAMED TO " + newName;
+            p.setNickname(newName);
         } else if (choice == 2) {
             status = "POKEMON HAS LEARNED NEW MOVE";
+            p.learnMove(generator.generateMove());
         } else if (choice == 3) {
             status = "RETURNED TO MAIN MENU";
-            return;
         }
 
-        pokemonMenu();
     }
 
+    // EFFECTS: facilitates the usage of the Pokemon Team Menu
     private void teamMenu() {
-        clearScreen();
-        flushStatus();
 
-        System.out.println(header);
-        System.out.println(team);
+        ui.printTeamMenuUI(team);
 
-        printTeamInfo();
+        int choice = 0;
 
-        System.out.println("Select an option:");
-        System.out.println("1. Edit Pokemon");
-        System.out.println("2. Release Pokemon");
-        System.out.println("3. Return to Main Menu");
-
-        int choice = getInputInt();
+        try {
+            choice = input.getInputInt("Enter the number of your choice: ", 1, 3);
+        } catch (BadInputException e) {
+            setStatus("Something's wrong with your input! Please try again.");
+            teamMenu();
+        }
 
         if (choice == 3) {
             status = "Successfully returned to main menu.";
-            return;
         } else {
-            System.out.println("Select a Pokemon:");
-            int index = getInputInt();
-
-            if (choice == 1) {
-                pokemonMenu();
-            } else if (choice == 2) {
-                status = "[POKEMON WILL BE REMOVED]";
-            }
+            editOrReleaseMenu(choice);
+            teamMenu();
         }
-
-        teamMenu();
     }
 
-    public void play() {
-        clearScreen();
-        flushStatus();
+    // EFFECTS: facilitates the edit & release sub-options of the Pokemon Team Menu
+    //          separated from the main menu function due to checkstyle line limits
+    private void editOrReleaseMenu(int choice) {
 
-        System.out.println(header);
-        System.out.println("Select an option:");
-        System.out.println("1. Encounter a new Pokemon");
-        System.out.println("2. Open team menu");
-        System.out.println("3. Exit game");
+        int index = 0;
 
-        int choice = getInputInt();
+        try {
+            index = input.getInputInt("Select the number of a Pokemon: ", 1, team.getTeamSize());
+        } catch (BadInputException e) {
+            setStatus("Something's wrong with your input! Please try again.");
+            return;
+        }
 
         if (choice == 1) {
-            encounter();
+            pokemonMenu(team.getPokemon(index - 1));
+        } else if (choice == 2) {
+            status = team.getDisplayNames().get(index - 1) + " has been released from the team!";
+            team.removePokemon(index - 1);
+        }
+    }
+
+    // EFFECTS: facilitates the primary gameplay loop
+    public void play() {
+
+        ui.printMainUI();
+
+        int choice = 0;
+
+        try {
+            choice = input.getInputInt("Enter the number of your choice: ", 1, 3);
+        } catch (BadInputException e) {
+            setStatus("Something's wrong with your input! Please try again.");
+            play();
+        }
+
+        if (choice == 1) {
+            encounter(generator.generatePokemon());
         } else if (choice == 2) {
             teamMenu();
         } else if (choice == 3) {
