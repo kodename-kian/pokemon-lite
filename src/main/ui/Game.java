@@ -40,6 +40,7 @@ public class Game {
         this.status = status;
     }
 
+    // MODIFIES: this
     // EFFECTS: facilitates encounter with a wild Pokemon
     private void encounter(Pokemon p) {
 
@@ -115,6 +116,7 @@ public class Game {
         }
     }
 
+    // MODIFIES: this
     // EFFECTS: facilitates the edit & release sub-options of the Pokemon Team Menu
     //          separated from the main menu function due to checkstyle line limits
     private void editOrReleaseMenu(int choice) {

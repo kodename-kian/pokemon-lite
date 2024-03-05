@@ -24,8 +24,8 @@ the finished product and find much enjoyment from it.
 - As a user, I want to be able to **release** a Pokemon from my team.
 - As a user, I want to be able to **set nicknames** for my Pokemon and **teach** them new moves.
 ### Phase 2 User Stories
-- As a user, I want to be able to **save** my progress in-game.
-- As a user, I want to be able to start over and **reset** my game.
+- As a user, I want to have the option to **save** my progress in-game to a file.
+- As a user, I want to have the option to **load** my previously saved progress from a file.
 ### Phase 3 User Stories *(to be revised)*
 - As a user, I want to be able to **move** around the game map and encounter random Pokemon.
 - As a user, I want to be able to **battle** other Pokemon using the Pokemon on my team.
