@@ -1,0 +1,38 @@
+{
+  "team": [
+    {
+      "species": "Charmander",
+      "type": "Fire",
+      "nickname": "Bob",
+      "moves": [
+        {
+          "type": "Water",
+          "attack": "Slash"
+        },
+        {
+          "type": "Dark",
+          "attack": "Blast"
+        }
+      ]
+    },
+    {
+      "species": "Mewtwo",
+      "type": "Fairy",
+      "nickname": "",
+      "moves": [
+        {
+          "type": "Fairy",
+          "attack": "Beam"
+        },
+        {
+          "type": "Fire",
+          "attack": "Rush"
+        },
+        {
+          "type": "Bug",
+          "attack": "Kick"
+        }
+      ]
+    }
+  ]
+}
