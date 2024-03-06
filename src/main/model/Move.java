@@ -1,5 +1,7 @@
 package model;
 
+import org.json.JSONObject;
+
 // Represents a move a Pokemon can have, with a type and an attack
 public class Move {
 
@@ -21,5 +23,11 @@ public class Move {
     //          false otherwise
     public boolean isEqual(Move m) {
         return (this.getDisplayName().equals(m.getDisplayName()));
+    }
+
+    // EFFECTS: creates a JSON object which stores all information about the Move
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        return json; // stub;
     }
 }

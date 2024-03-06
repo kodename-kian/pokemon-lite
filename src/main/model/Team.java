@@ -1,5 +1,7 @@
 package model;
 
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -42,5 +44,11 @@ public class Team {
     // EFFECTS: returns size of team
     public int getTeamSize() {
         return team.size();
+    }
+
+    // EFFECTS: creates a JSON object which stores all information about the Team
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        return json; // stub;
     }
 }

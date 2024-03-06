@@ -1,5 +1,7 @@
 package model;
 
+import org.json.JSONObject;
+
 // Represents a Pokemon that belongs to a player's team
 public class CapturedPokemon extends Pokemon {
 
@@ -31,5 +33,11 @@ public class CapturedPokemon extends Pokemon {
         } else {
             return this.nickname + " (" + super.getDisplayName() + ")";
         }
+    }
+
+    // EFFECTS: creates a JSON object which stores all information about the Captured Pokemon
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        return json; // stub;
     }
 }
