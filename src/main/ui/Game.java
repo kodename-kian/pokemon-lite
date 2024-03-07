@@ -1,20 +1,28 @@
 package ui;
 
 import model.*;
+import persistence.JsonReader;
+import persistence.JsonWriter;
 import ui.exceptions.BadInputException;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 
 // Primary class to run the game
 // Specifics of input & output handling abstracted to helper classes
 public class Game {
 
+    private static final String SAVE_ADDRESS = "./data/myTeam.json";
+
     private String status;
     private final UITool ui;
     private final InputTool input;
 
-    private final Team team;
+    private Team team;
     private final Generator generator;
+
+    private JsonWriter writer;
+    private JsonReader reader;
 
     // EFFECTS: initializes all the required fields
     public Game() {
@@ -28,6 +36,9 @@ public class Game {
         } catch (IOException e) {
             throw new RuntimeException(e); //should never happen!
         }
+
+        writer = new JsonWriter(SAVE_ADDRESS);
+        reader = new JsonReader(SAVE_ADDRESS);
     }
 
     // EFFECTS: getter for status
@@ -138,6 +149,33 @@ public class Game {
         }
     }
 
+    // Referenced from the JsonSerialization Demo
+    // https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo
+    // EFFECTS: saves this.team to file
+    private void saveTeam() {
+        try {
+            writer.open();
+            writer.write(this.team);
+            writer.close();
+            setStatus("Game successfully saved to " + SAVE_ADDRESS);
+        } catch (FileNotFoundException e) {
+            setStatus("Something went wrong! Unable to save game at " + SAVE_ADDRESS);
+        }
+    }
+
+    // Referenced from the JsonSerialization Demo
+    // https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo
+    // MODIFIES: this
+    // EFFECTS: loads team into this.team from file
+    private void loadTeam() {
+        try {
+            this.team = reader.read();
+            setStatus("Save successfully loaded from " + SAVE_ADDRESS);
+        } catch (IOException e) {
+            setStatus("Something went wrong! Unable to load game from " + SAVE_ADDRESS);
+        }
+    }
+
     // EFFECTS: facilitates the primary gameplay loop
     public void play() {
 
@@ -149,7 +187,7 @@ public class Game {
             int choice = 0;
 
             try {
-                choice = input.getInputInt("Enter the number of your choice: ", 1, 3);
+                choice = input.getInputInt("Enter the number of your choice: ", 1, 5);
             } catch (BadInputException e) {
                 setStatus("Something's wrong with your input! Please try again.");
                 continue;
@@ -160,6 +198,10 @@ public class Game {
             } else if (choice == 2) {
                 teamMenu();
             } else if (choice == 3) {
+                saveTeam();
+            } else if (choice == 4) {
+                loadTeam();
+            } else if (choice == 5) {
                 loopGame = false;
             }
 

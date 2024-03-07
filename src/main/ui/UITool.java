@@ -121,6 +121,8 @@ public class UITool {
         System.out.println("Select an option:");
         System.out.println("1. Encounter a new Pokemon");
         System.out.println("2. Open Team menu");
-        System.out.println("3. Exit game");
+        System.out.println("3. Save Game");
+        System.out.println("4. Load Game");
+        System.out.println("5. Exit game");
     }
 }
