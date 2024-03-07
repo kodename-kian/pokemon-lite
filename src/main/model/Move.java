@@ -28,6 +28,10 @@ public class Move {
     // EFFECTS: creates a JSON object which stores all information about the Move
     public JSONObject toJson() {
         JSONObject json = new JSONObject();
-        return json; // stub;
+
+        json.put("type", this.type);
+        json.put("attack", this.attack);
+
+        return json;
     }
 }

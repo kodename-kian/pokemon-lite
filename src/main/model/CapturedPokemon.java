@@ -1,5 +1,6 @@
 package model;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 // Represents a Pokemon that belongs to a player's team
@@ -38,6 +39,21 @@ public class CapturedPokemon extends Pokemon {
     // EFFECTS: creates a JSON object which stores all information about the Captured Pokemon
     public JSONObject toJson() {
         JSONObject json = new JSONObject();
-        return json; // stub;
+        json.put("species", this.species);
+        json.put("type", getType());
+        json.put("nickname", this.nickname);
+        json.put("moves", movesToJson());
+        return json;
+    }
+
+    // EFFECTS: returns Moves of CapturedPokemon as a JSON array
+    private JSONArray movesToJson() {
+        JSONArray jsonArray = new JSONArray();
+
+        for (int index = 0; index < getNumMoves(); index++) {
+            jsonArray.put(getMove(index).toJson());
+        }
+
+        return jsonArray;
     }
 }

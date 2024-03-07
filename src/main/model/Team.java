@@ -1,5 +1,6 @@
 package model;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
@@ -49,6 +50,15 @@ public class Team {
     // EFFECTS: creates a JSON object which stores all information about the Team
     public JSONObject toJson() {
         JSONObject json = new JSONObject();
-        return json; // stub;
+
+        JSONArray jsonArray = new JSONArray();
+
+        for (CapturedPokemon pokemon : team) {
+            jsonArray.put(pokemon.toJson());
+        }
+
+        json.put("team", jsonArray);
+
+        return json;
     }
 }

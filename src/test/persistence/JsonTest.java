@@ -30,7 +30,7 @@ public class JsonTest {
         testPokemon3.learnMove(new Move("Fighting", "Kick"));
     }
 
-    protected void compareCapturedPokemon(CapturedPokemon test, CapturedPokemon ref) {
+    protected void compareCapturedPokemon(CapturedPokemon ref, CapturedPokemon test) {
         assertEquals(ref.getDisplayName(), test.getDisplayName());
         assertEquals(ref.getNickname(), test.getNickname());
         assertEquals(ref.getType(), test.getType());

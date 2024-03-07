@@ -1,0 +1,44 @@
+{"team": [
+    {
+        "species": "Voltorb",
+        "moves": [
+            {
+                "attack": "Slash",
+                "type": "Electric"
+            },
+            {
+                "attack": "Beam",
+                "type": "Fire"
+            },
+            {
+                "attack": "Rush",
+                "type": "Ice"
+            },
+            {
+                "attack": "Kick",
+                "type": "Fighting"
+            }
+        ],
+        "nickname": "Voltorb",
+        "type": "Ice"
+    },
+    {
+        "species": "Mewtwo",
+        "moves": [
+            {
+                "attack": "Beam",
+                "type": "Fairy"
+            },
+            {
+                "attack": "Rush",
+                "type": "Fire"
+            },
+            {
+                "attack": "Kick",
+                "type": "Bug"
+            }
+        ],
+        "nickname": "",
+        "type": "Fairy"
+    }
+]}

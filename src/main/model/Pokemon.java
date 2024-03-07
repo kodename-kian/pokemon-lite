@@ -6,7 +6,7 @@ import java.util.List;
 // Represents a Pokemon with a species, type, health, and list of moves
 public class Pokemon {
 
-    private String species;
+    protected String species;
     private String type;
     private List<Move> moves;
 
