@@ -1,5 +1,6 @@
 package ui.gui;
 
+import model.Generator;
 import model.Team;
 import ui.gui.managers.PersistenceManager;
 import ui.gui.panels.EncounterPanel;
@@ -7,15 +8,18 @@ import ui.gui.panels.GamePanel;
 import ui.gui.panels.TeamPanel;
 
 import javax.swing.*;
+import java.io.IOException;
 
 public class MainWindow extends JFrame {
 
-    Team team;
+    private Team team;
 
-    JPanel gamePanel;
-    JPanel teamPanel;
+    private final JPanel gamePanel;
+    private final JPanel teamPanel;
 
-    PersistenceManager persistenceManager;
+    private final PersistenceManager persistenceManager;
+
+    private final Generator generator;
 
     public MainWindow() {
 
@@ -24,6 +28,12 @@ public class MainWindow extends JFrame {
         this.team = new Team();
 
         persistenceManager = new PersistenceManager(this.team);
+
+        try {
+            generator = new Generator("generation1");
+        } catch (IOException e) {
+            throw new RuntimeException(e); //should never happen!
+        }
 
         setDefaultCloseOperation(EXIT_ON_CLOSE);
 
@@ -44,7 +54,9 @@ public class MainWindow extends JFrame {
     }
 
 
-
+    public Team getTeam() {
+        return this.team;
+    }
 
     public void switchPanel(String select) {
         switch (select) {
@@ -55,7 +67,7 @@ public class MainWindow extends JFrame {
                 equip(teamPanel);
                 break;
             case "ENCOUNTER":
-                equip(new EncounterPanel());
+                equip(new EncounterPanel(generator.generatePokemon()));
                 break;
         }
     }
@@ -65,6 +77,6 @@ public class MainWindow extends JFrame {
     }
 
     public void loadGame() {
-        persistenceManager.loadTeam();
+        this.team = persistenceManager.loadTeam();
     }
 }

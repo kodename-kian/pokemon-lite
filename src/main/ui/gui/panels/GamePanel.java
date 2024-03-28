@@ -51,7 +51,7 @@ public class GamePanel extends JPanel {
 
         saveButton.addActionListener(new SaveListener());
         loadButton.addActionListener(new LoadListener());
-        teamButton.addActionListener(new TeamListener());
+        teamButton.addActionListener(new PanelSwapListener("TEAM"));
 
         controlPanel.add(saveButton);
         controlPanel.add(loadButton);

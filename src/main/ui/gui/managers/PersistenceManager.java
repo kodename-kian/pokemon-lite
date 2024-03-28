@@ -38,7 +38,7 @@ public class PersistenceManager {
         }
     }
 
-    public void loadTeam() {
+    public Team loadTeam() {
         try {
             this.team = reader.read();
             JOptionPane.showMessageDialog(null,
@@ -49,5 +49,6 @@ public class PersistenceManager {
                     "Error",
                     JOptionPane.ERROR_MESSAGE);
         }
+        return this.team;
     }
 }
