@@ -2,6 +2,7 @@ package ui.gui;
 
 import model.Team;
 import ui.gui.managers.PersistenceManager;
+import ui.gui.panels.EncounterPanel;
 import ui.gui.panels.GamePanel;
 import ui.gui.panels.TeamPanel;
 
@@ -40,11 +41,24 @@ public class MainWindow extends JFrame {
         this.repaint();
         this.add(panel);
         this.pack();
-        System.out.println("ok");
     }
 
 
 
+
+    public void switchPanel(String select) {
+        switch (select) {
+            case "GAME":
+                equip(gamePanel);
+                break;
+            case "TEAM":
+                equip(teamPanel);
+                break;
+            case "ENCOUNTER":
+                equip(new EncounterPanel());
+                break;
+        }
+    }
 
     public void saveGame() {
         persistenceManager.saveTeam();

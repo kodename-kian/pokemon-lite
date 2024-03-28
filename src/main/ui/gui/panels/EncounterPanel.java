@@ -7,16 +7,16 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
-public class TeamPanel extends JPanel {
+public class EncounterPanel extends JPanel {
 
-    public TeamPanel() {
+    public EncounterPanel() {
         super();
 
         JPanel graphicsPanel = new JPanel();
 
         BufferedImage bufferedImage;
         try {
-            bufferedImage = ImageIO.read(new File("./data/images/test2.jpg"));
+            bufferedImage = ImageIO.read(new File("./data/images/test3.jpg"));
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
