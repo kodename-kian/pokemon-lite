@@ -20,8 +20,8 @@ public class EncounterPanel extends JPanel {
         this.pokemon = pokemon;
         System.out.println(pokemon.getDisplayName());
 
-        BoxLayout boxLayout = new BoxLayout(this, BoxLayout.Y_AXIS);
-        this.setLayout(boxLayout);
+        this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+        this.setPreferredSize(new Dimension(625, 450));
 
         initGraphicsPanel();
         initControlPanel();

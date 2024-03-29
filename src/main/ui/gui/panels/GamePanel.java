@@ -14,8 +14,8 @@ public class GamePanel extends JPanel {
     public GamePanel() {
         super();
 
-        BoxLayout boxLayout = new BoxLayout(this, BoxLayout.Y_AXIS);
-        this.setLayout(boxLayout);
+        this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+        this.setPreferredSize(new Dimension(625, 450));
 
         initGraphicsPanel();
         initControlPanel();

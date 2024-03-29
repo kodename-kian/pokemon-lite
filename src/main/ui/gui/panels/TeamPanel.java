@@ -4,27 +4,51 @@ import model.Team;
 import ui.gui.listeners.PanelSwapListener;
 
 import javax.swing.*;
+import java.awt.*;
 
 public class TeamPanel extends JPanel {
+
+    JPanel detailPanel;
 
     public TeamPanel(Team team) {
         super();
 
-        this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+        this.setLayout(new FlowLayout(FlowLayout.LEFT));
+        this.setPreferredSize(new Dimension(625, 450));
+
+        constructLeftPanel(team);
+    }
+
+    public void placeDetailPanel(PokemonPanel panel) {
+        if (this.detailPanel != null) {
+            this.remove(detailPanel);
+        }
+        this.add(panel);
+        this.detailPanel = panel;
+        this.repaint();
+        this.revalidate();
+    }
+
+    private void constructLeftPanel(Team team) {
+        JPanel leftPanel = new JPanel();
+        leftPanel.setLayout(new BoxLayout(leftPanel, BoxLayout.Y_AXIS));
+        leftPanel.setPreferredSize(new Dimension(175, 425));
 
         if (team.getTeamSize() == 0) {
-            this.add(new JLabel("Team is currently empty!"));
+            leftPanel.add(new JLabel("Team is currently empty!"));
         } else {
-            constructTeamPanel(team);
+            leftPanel.add(constructTeamPanel(team));
         }
 
         JButton gameButton = new JButton("Back");
         gameButton.addActionListener(new PanelSwapListener("GAME"));
 
-        this.add(gameButton);
+        leftPanel.add(gameButton);
+
+        this.add(leftPanel);
     }
 
-    private void constructTeamPanel(Team team) {
+    private JScrollPane constructTeamPanel(Team team) {
         JPanel panel = new JPanel();
 
         BoxLayout boxLayout = new BoxLayout(panel, BoxLayout.Y_AXIS);
@@ -35,8 +59,6 @@ public class TeamPanel extends JPanel {
             panel.add(panel2);
         }
 
-        JScrollPane scrollPane = new JScrollPane(panel);
-
-        this.add(scrollPane);
+        return new JScrollPane(panel);
     }
 }
