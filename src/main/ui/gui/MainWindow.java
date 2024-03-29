@@ -57,6 +57,10 @@ public class MainWindow extends JFrame {
         return this.team;
     }
 
+    public Generator getGenerator() {
+        return this.generator;
+    }
+
     public void switchPanel(String select) {
         switch (select) {
             case "GAME":

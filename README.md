@@ -22,15 +22,21 @@ the finished product and find much enjoyment from it.
 - As a user, I want to be able to catch Pokemon and **add** it to my team.
 - As a user, I want to be able to **view** all the Pokemon on my team.
 - As a user, I want to be able to **release** a Pokemon from my team.
-- As a user, I want to be able to **set nicknames** for my Pokemon and **teach** them new moves.
+- As a user, I want to be able to **set nicknames** for my Pokemon.
+- As a user, I want to be able to **teach** my Pokemon new moves.
 ### Phase 2 User Stories
 - As a user, I want to have the option to **save** my progress in-game to a file.
 - As a user, I want to have the option to **load** my previously saved progress from a file.
 ## Instructions for Grader (Phase 3)
-- You can generate the first required action related to the user story "adding multiple Pokemon to my Team" 
-*(adding multiple Xs to a Y)* by selecting **"Encounter Pokemon" > "Catch Pokemon"** from the main window.
-- You can generate the second required action related to the user story "releasing a Pokemon from my Team"
-*(removing an X from Y)* by selecting **"View Team" > "Details" > "Release Pokemon"** from the main window.
+- You can add Pokemon to the Team *(adding multiple Xs to a Y)* by clicking 
+**"Encounter Pokemon" > "Catch Pokemon"** from the main window.
+- You can view the Pokemon on the Team *(view all Xs in Y)* by clicking **"View Team"** from the main window.
+- You can generate the first required action related to the user story "adding multiple Xs to a Y" by selecting 
+**"View Team" > "Details" > "Learn New Move"** to fulfill the user story "teach a Pokemon a new Move" 
+*(modifying an X in Y)*.
+- You can generate the second required action related to the user story "adding multiple Xs to a Y" by selecting
+**"View Team" > "Details" > "Release Pokemon"** to fulfill the user story "release a Pokemon from my team"
+*(remove an X from Y)*.
 - You can locate my visual component by selecting **"Encounter Pokemon"** on the main window.
 - You can save the state of my application by selecting **"Save Game"** on the main window.
 - You can reload the state of my application by selecting **"Load Game"** on the main widnow.

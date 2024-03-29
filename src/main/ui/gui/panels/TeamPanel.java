@@ -34,6 +34,8 @@ public class TeamPanel extends JPanel {
         leftPanel.setLayout(new BoxLayout(leftPanel, BoxLayout.Y_AXIS));
         leftPanel.setPreferredSize(new Dimension(175, 425));
 
+        leftPanel.add(Box.createVerticalGlue());
+
         if (team.getTeamSize() == 0) {
             leftPanel.add(new JLabel("Team is currently empty!"));
         } else {

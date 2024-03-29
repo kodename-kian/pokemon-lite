@@ -1,7 +1,7 @@
 package ui.gui.panels;
 
 import model.CapturedPokemon;
-import ui.gui.listeners.ReleaseListener;
+import ui.gui.listeners.*;
 
 import javax.swing.*;
 import java.awt.*;
@@ -15,28 +15,29 @@ public class PokemonPanel extends JPanel {
 
         this.add(Box.createVerticalGlue());
 
-        JPanel ayoh = new JPanel();
-        ayoh.setLayout(new BoxLayout(ayoh, BoxLayout.Y_AXIS));
-
-        ayoh.add(new JLabel("POKEMON " + (index + 1) + ": " + pokemon.getDisplayName()));
-        ayoh.add(new JLabel("TYPE: " + pokemon.getType()));
-
-        this.add(new JScrollPane(ayoh));
+        this.add(constructMainInfoBar(pokemon, index));
         this.add(constructMovesList(pokemon));
 
         this.add(Box.createVerticalGlue());
 
-        JButton removeButton = new JButton("Release Pokemon");
-        removeButton.addActionListener(new ReleaseListener(index));
-        this.add(removeButton);
+        this.add(constructButtonBar(index));
     }
 
+    private JScrollPane constructMainInfoBar(CapturedPokemon pokemon, int index) {
+        JPanel panel = new JPanel(new BorderLayout(5, 5));
+
+        panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
+
+        panel.add(new JLabel("POKEMON " + (index + 1) + ": " + pokemon.getDisplayName()));
+        panel.add(new JLabel("TYPE: " + pokemon.getType()));
+
+        return new JScrollPane(panel);
+    }
 
     private JScrollPane constructMovesList(CapturedPokemon pokemon) {
         JPanel panel = new JPanel(new BorderLayout(5, 5));
 
-        BoxLayout boxLayout = new BoxLayout(panel, BoxLayout.Y_AXIS);
-        panel.setLayout(boxLayout);
+        panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
 
         panel.add(new JLabel("MOVES:"));
 
@@ -45,6 +46,21 @@ public class PokemonPanel extends JPanel {
         }
 
         return new JScrollPane(panel);
+    }
+
+    private JPanel constructButtonBar(int index) {
+        JPanel panel = new JPanel();
+        panel.setLayout(new FlowLayout());
+
+        JButton newMoveButton = new JButton("Learn New Move");
+        newMoveButton.addActionListener(new MoveListener(index));
+        panel.add(newMoveButton);
+
+        JButton removeButton = new JButton("Release Pokemon");
+        removeButton.addActionListener(new ReleaseListener(index));
+        panel.add(removeButton);
+
+        return panel;
     }
 
 }
