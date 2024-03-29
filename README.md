@@ -26,7 +26,11 @@ the finished product and find much enjoyment from it.
 ### Phase 2 User Stories
 - As a user, I want to have the option to **save** my progress in-game to a file.
 - As a user, I want to have the option to **load** my previously saved progress from a file.
-### Phase 3 User Stories *(to be revised)*
-- As a user, I want to be able to **move** around the game map and encounter random Pokemon.
-- As a user, I want to be able to **battle** other Pokemon using the Pokemon on my team.
-- As a user, I want to be able to **heal** the Pokemon on my team.
+## Instructions for Grader (Phase 3)
+- You can generate the first required action related to the user story "adding multiple Pokemon to my Team" 
+*(adding multiple Xs to a Y)* by selecting **"Encounter Pokemon" > "Catch Pokemon"** from the main window.
+- You can generate the second required action related to the user story "releasing a Pokemon from my Team"
+*(removing an X from Y)* by selecting **"View Team" > "Details" > "Release Pokemon"** from the main window.
+- You can locate my visual component by selecting **"Encounter Pokemon"** on the main window.
+- You can save the state of my application by selecting **"Save Game"** on the main window.
+- You can reload the state of my application by selecting **"Load Game"** on the main widnow.
