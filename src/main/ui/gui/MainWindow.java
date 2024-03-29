@@ -15,7 +15,6 @@ public class MainWindow extends JFrame {
     private Team team;
 
     private final JPanel gamePanel;
-    private final JPanel teamPanel;
 
     private final PersistenceManager persistenceManager;
 
@@ -38,12 +37,12 @@ public class MainWindow extends JFrame {
         setDefaultCloseOperation(EXIT_ON_CLOSE);
 
         gamePanel = new GamePanel();
-        teamPanel = new TeamPanel();
 
         equip(gamePanel);
 
         setLocationRelativeTo(null);
         setVisible(true);
+
     }
 
     private void equip(JPanel panel) {
@@ -64,10 +63,10 @@ public class MainWindow extends JFrame {
                 equip(gamePanel);
                 break;
             case "TEAM":
-                equip(teamPanel);
+                equip(new TeamPanel(this.team));
                 break;
             case "ENCOUNTER":
-                equip(new EncounterPanel(generator.generatePokemon()));
+                equip(new EncounterPanel(this.generator.generatePokemon()));
                 break;
         }
     }

@@ -29,7 +29,7 @@ public class GamePanel extends JPanel {
 
         BufferedImage bufferedImage;
         try {
-            bufferedImage = ImageIO.read(new File("./data/images/test.JPG")); // TODO: replace with artwork
+            bufferedImage = ImageIO.read(new File("./data/images/test2.jpg")); // TODO: replace with artwork
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

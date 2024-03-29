@@ -1,29 +1,42 @@
 package ui.gui.panels;
 
-import javax.imageio.ImageIO;
+import model.Team;
+import ui.gui.listeners.PanelSwapListener;
+
 import javax.swing.*;
-import java.awt.*;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
 
 public class TeamPanel extends JPanel {
 
-    public TeamPanel() {
+    public TeamPanel(Team team) {
         super();
 
-        JPanel graphicsPanel = new JPanel();
+        this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 
-        BufferedImage bufferedImage;
-        try {
-            bufferedImage = ImageIO.read(new File("./data/images/test2.jpg"));
-        } catch (IOException e) {
-            throw new RuntimeException(e);
+        if (team.getTeamSize() == 0) {
+            this.add(new JLabel("Team is currently empty!"));
+        } else {
+            constructTeamPanel(team);
         }
-        Image image = bufferedImage.getScaledInstance(600, 400, Image.SCALE_DEFAULT);
 
-        graphicsPanel.add(new JLabel(new ImageIcon(image)));
+        JButton gameButton = new JButton("Back");
+        gameButton.addActionListener(new PanelSwapListener("GAME"));
 
-        this.add(graphicsPanel);
+        this.add(gameButton);
+    }
+
+    private void constructTeamPanel(Team team) {
+        JPanel panel = new JPanel();
+
+        BoxLayout boxLayout = new BoxLayout(panel, BoxLayout.Y_AXIS);
+        panel.setLayout(boxLayout);
+
+        for (int index = 0; index < team.getTeamSize(); index++) {
+            PokemonListPanel panel2 = new PokemonListPanel(team.getPokemon(index));
+            panel.add(panel2);
+        }
+
+        JScrollPane scrollPane = new JScrollPane(panel);
+
+        this.add(scrollPane);
     }
 }
