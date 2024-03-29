@@ -9,14 +9,16 @@ import java.awt.event.ActionEvent;
 public class ViewListener extends AbstractListener {
 
     private final CapturedPokemon pokemon;
+    private final int index;
 
-    public ViewListener(CapturedPokemon pokemon) {
+    public ViewListener(CapturedPokemon pokemon, int index) {
         super();
         this.pokemon = pokemon;
+        this.index = index;
     }
 
     public void actionPerformed(ActionEvent e) {
         Object obj = e.getSource();
-        getTeamPanel((Component)obj).placeDetailPanel(new PokemonPanel(this.pokemon));
+        getTeamPanel((Component)obj).placeDetailPanel(new PokemonPanel(this.pokemon, this.index));
     }
 }

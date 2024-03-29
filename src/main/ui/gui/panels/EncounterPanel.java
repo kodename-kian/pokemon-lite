@@ -18,7 +18,8 @@ public class EncounterPanel extends JPanel {
         super();
 
         this.pokemon = pokemon;
-        System.out.println(pokemon.getDisplayName());
+        JOptionPane.showMessageDialog(null,
+                "You've encountered a wild " + this.pokemon.getDisplayName() + "!");
 
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         this.setPreferredSize(new Dimension(625, 450));

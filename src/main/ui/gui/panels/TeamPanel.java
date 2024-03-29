@@ -40,6 +40,8 @@ public class TeamPanel extends JPanel {
             leftPanel.add(constructTeamPanel(team));
         }
 
+        leftPanel.add(Box.createVerticalGlue());
+
         JButton gameButton = new JButton("Back");
         gameButton.addActionListener(new PanelSwapListener("GAME"));
 
@@ -55,7 +57,7 @@ public class TeamPanel extends JPanel {
         panel.setLayout(boxLayout);
 
         for (int index = 0; index < team.getTeamSize(); index++) {
-            PokemonListPanel panel2 = new PokemonListPanel(team.getPokemon(index));
+            PokemonListPanel panel2 = new PokemonListPanel(team.getPokemon(index), index);
             panel.add(panel2);
         }
 
