@@ -10,10 +10,13 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
+// JPanel Class for wild Pokemon encounter
 public class EncounterPanel extends JPanel {
 
     Pokemon pokemon;
 
+    // MODIFIES: this
+    // EFFECTS: creates the EncounterPanel
     public EncounterPanel(Pokemon pokemon) {
         super();
 
@@ -29,6 +32,8 @@ public class EncounterPanel extends JPanel {
 
     }
 
+    // MODIFIES: this
+    // EFFECTS: creates and adds the graphics portion of this panel
     private void initGraphicsPanel() {
         JPanel graphicsPanel = new JPanel();
 
@@ -45,6 +50,8 @@ public class EncounterPanel extends JPanel {
         this.add(graphicsPanel);
     }
 
+    // MODIFIES: this
+    // EFFECTS: creates and adds the control portion of this panel
     private void initControlPanel() {
         JPanel controlPanel = new JPanel();
         JButton catchButton = new JButton("Catch Pokemon");

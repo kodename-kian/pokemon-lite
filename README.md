@@ -40,3 +40,7 @@ the finished product and find much enjoyment from it.
 - You can locate my visual component by selecting **"Encounter Pokemon"** on the main window.
 - You can save the state of my application by selecting **"Save Game"** on the main window.
 - You can reload the state of my application by selecting **"Load Game"** on the main widnow.
+
+#### Art Credits
+- Pallet Town art: taken from https://www.youtube.com/watch?v=Vr32Us59Zv4
+- Pokemon Encounter art: own work using *ibisPaint X*

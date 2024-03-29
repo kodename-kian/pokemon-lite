@@ -9,8 +9,11 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
+// JPanel Class for the main game window
 public class GamePanel extends JPanel {
 
+    // MODIFIES: this
+    // EFFECTS: creates the GamePanel
     public GamePanel() {
         super();
 
@@ -21,6 +24,8 @@ public class GamePanel extends JPanel {
         initControlPanel();
     }
 
+    // MODIFIES: this
+    // EFFECTS: creates and adds the graphics portion of this panel
     private void initGraphicsPanel() {
         JPanel graphicsPanel = new JPanel();
 
@@ -29,7 +34,7 @@ public class GamePanel extends JPanel {
 
         BufferedImage bufferedImage;
         try {
-            bufferedImage = ImageIO.read(new File("./data/images/test2.jpg")); // TODO: replace with artwork
+            bufferedImage = ImageIO.read(new File("./data/images/game.jpg"));
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -43,6 +48,8 @@ public class GamePanel extends JPanel {
         this.add(graphicsPanel);
     }
 
+    // MODIFIES: this
+    // EFFECTS: creates and adds the control portion of this panel
     private void initControlPanel() {
         JPanel controlPanel = new JPanel();
         JButton saveButton = new JButton("Save Game");

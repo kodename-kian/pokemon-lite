@@ -8,6 +8,7 @@ import javax.swing.*;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
+// A class to handle persistence for the MainWindow
 public class PersistenceManager {
 
     private static final String SAVE_ADDRESS = "./data/myTeam.json";
@@ -17,12 +18,14 @@ public class PersistenceManager {
 
     private Team team;
 
+    // EFFECTS: initializes PersistenceManager
     public PersistenceManager(Team team) {
         this.writer = new JsonWriter(SAVE_ADDRESS);
         this.reader = new JsonReader(SAVE_ADDRESS);
         this.team = team;
     }
 
+    // EFFECTS: saves Team to memory
     public void saveTeam() {
         try {
             writer.open();
@@ -38,6 +41,8 @@ public class PersistenceManager {
         }
     }
 
+    // MODIFIES: this.team
+    // EFFECTS: loads Team data in from memory
     public Team loadTeam() {
         try {
             this.team = reader.read();

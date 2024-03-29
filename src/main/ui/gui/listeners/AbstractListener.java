@@ -6,7 +6,10 @@ import ui.gui.panels.TeamPanel;
 import java.awt.*;
 import java.awt.event.ActionListener;
 
+// Abstract class to hold shared ActionListener functionality
 public abstract class AbstractListener implements ActionListener {
+
+    // EFFECTS: returns the oldest ancestor of the component tree
     protected MainWindow getMainWindow(Component component) {
         Component currParent = component;
         MainWindow frame = null;
@@ -20,6 +23,7 @@ public abstract class AbstractListener implements ActionListener {
         return frame;
     }
 
+    // EFFECTS: returns the team panel component ancestor
     protected TeamPanel getTeamPanel(Component component) {
         Component currParent = component;
         TeamPanel panel = null;

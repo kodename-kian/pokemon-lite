@@ -6,10 +6,13 @@ import ui.gui.listeners.PanelSwapListener;
 import javax.swing.*;
 import java.awt.*;
 
+// JPanel Class for the view of the full PokemonTeam
 public class TeamPanel extends JPanel {
 
     JPanel detailPanel;
 
+    // MODIFIES: this
+    // EFFECTS: creates the TeamPanel
     public TeamPanel(Team team) {
         super();
 
@@ -19,6 +22,8 @@ public class TeamPanel extends JPanel {
         constructLeftPanel(team);
     }
 
+    // MODIFIES: this
+    // EFFECTS: places a PokemonPanel into this panel
     public void placeDetailPanel(PokemonPanel panel) {
         if (this.detailPanel != null) {
             this.remove(detailPanel);
@@ -29,6 +34,8 @@ public class TeamPanel extends JPanel {
         this.revalidate();
     }
 
+    // MODIFIES: this
+    // EFFECTS: creates and adds the left-side panel of this menu
     private void constructLeftPanel(Team team) {
         JPanel leftPanel = new JPanel();
         leftPanel.setLayout(new BoxLayout(leftPanel, BoxLayout.Y_AXIS));
@@ -52,6 +59,8 @@ public class TeamPanel extends JPanel {
         this.add(leftPanel);
     }
 
+    // MODIFIES: this
+    // EFFECTS: creates a list of PokemonListPanels for the left-side panel
     private JScrollPane constructTeamPanel(Team team) {
         JPanel panel = new JPanel();
 

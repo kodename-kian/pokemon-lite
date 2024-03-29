@@ -6,7 +6,11 @@ import ui.gui.listeners.*;
 import javax.swing.*;
 import java.awt.*;
 
+// JPanel Class for the in-detail view of a Pokemon
 public class PokemonPanel extends JPanel {
+
+    // MODIFIES: this
+    // EFFECTS: creates the PokemonPanel
     public PokemonPanel(CapturedPokemon pokemon, int index) {
         super();
 
@@ -23,6 +27,8 @@ public class PokemonPanel extends JPanel {
         this.add(constructButtonBar(index));
     }
 
+    // MODIFIES: this
+    // EFFECTS: creates and returns a panel for the main information about the Pokemon
     private JScrollPane constructMainInfoBar(CapturedPokemon pokemon, int index) {
         JPanel panel = new JPanel(new BorderLayout(5, 5));
 
@@ -34,6 +40,8 @@ public class PokemonPanel extends JPanel {
         return new JScrollPane(panel);
     }
 
+    // MODIFIES: this
+    // EFFECTS: creates and returns a panel for the list of Moves of the Pokemon
     private JScrollPane constructMovesList(CapturedPokemon pokemon) {
         JPanel panel = new JPanel(new BorderLayout(5, 5));
 
@@ -48,6 +56,8 @@ public class PokemonPanel extends JPanel {
         return new JScrollPane(panel);
     }
 
+    // MODIFIES: this
+    // EFFECTS: creates and returns the control portion of this panel
     private JPanel constructButtonBar(int index) {
         JPanel panel = new JPanel();
         panel.setLayout(new FlowLayout());
