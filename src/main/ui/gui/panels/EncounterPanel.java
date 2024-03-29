@@ -34,7 +34,7 @@ public class EncounterPanel extends JPanel {
 
         BufferedImage bufferedImage;
         try {
-            bufferedImage = ImageIO.read(new File("./data/images/test3.jpg")); // TODO: replace with artwork
+            bufferedImage = ImageIO.read(new File("./data/images/encounter.png"));
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
