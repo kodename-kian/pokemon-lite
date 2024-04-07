@@ -19,6 +19,11 @@ public class Pokemon {
         this.species = species;
         this.type = type;
         this.moves = new ArrayList<Move>();
+
+        if (this.getClass() == Pokemon.class) { // a new, wild Pokemon being created
+            EventLog.getInstance().logEvent(
+                    new Event("Player encountered a wild " + this.getDisplayName() + "!"));
+        }
     }
 
     // EFFECTS: returns species of Pokemon for display
@@ -58,12 +63,22 @@ public class Pokemon {
                 new Event(this.getDisplayName() + " learned " + m.getDisplayName() + "!"));
     }
 
+    // METHOD OVERLOAD
+    // REQUIRES: can only be used in Pokemon.capture()
+    // MODIFIES: this
+    // EFFECTS: adds move to list of moves, does not log (since Pokemon is being "cloned")
+    protected void learnMove(Move m, boolean silence) {
+        if (silence) {
+            this.moves.add(m);
+        }
+    }
+
     // EFFECTS: returns a new CapturedPokemon object
     //          with the same attributes as this Pokemon
     public CapturedPokemon capture() {
         CapturedPokemon cp = new CapturedPokemon(this.species, this.type);
         for (Move m : this.moves) {
-            cp.learnMove(m);
+            cp.learnMove(m, true);
         }
         return cp;
     }
