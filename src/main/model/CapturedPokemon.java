@@ -1,5 +1,7 @@
 package model;
 
+import model.phase4.Event;
+import model.phase4.EventLog;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -16,13 +18,17 @@ public class CapturedPokemon extends Pokemon {
 
     // EFFECTS: returns nickname of captured Pokemon
     public String getNickname() {
-        return this.nickname; //stub
+        return this.nickname;
     }
 
     // MODIFIES: this
     // EFFECTS: sets a nickname for Pokemon
     public void setNickname(String s) {
+        String oldName = this.getDisplayName();
         this.nickname = s;
+        String newName = this.getDisplayName();
+
+        EventLog.getInstance().logEvent(new Event(oldName + " has been renamed to " + newName + "!"));
     }
 
     // EFFECTS: returns combined String of nickname and species

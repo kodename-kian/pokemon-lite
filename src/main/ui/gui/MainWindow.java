@@ -2,12 +2,16 @@ package ui.gui;
 
 import model.Generator;
 import model.Team;
+import model.phase4.Event;
+import model.phase4.EventLog;
 import ui.gui.managers.PersistenceManager;
 import ui.gui.panels.EncounterPanel;
 import ui.gui.panels.GamePanel;
 import ui.gui.panels.TeamPanel;
 
 import javax.swing.*;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.io.IOException;
 
 // Main window for the GUI
@@ -37,7 +41,14 @@ public class MainWindow extends JFrame {
             throw new RuntimeException(e); //should never happen!
         }
 
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
+        this.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                dumpLog();
+                System.exit(0);
+            }
+        });
 
         gamePanel = new GamePanel();
 
@@ -46,6 +57,15 @@ public class MainWindow extends JFrame {
         setLocationRelativeTo(null);
         setVisible(true);
 
+    }
+
+    // EFFECTS: prints all the contents of log
+    private void dumpLog() {
+        System.out.println("APP CLOSING... PRINTING SESSION LOG:");
+        for (Event event : EventLog.getInstance()) {
+            System.out.println();
+            System.out.println(event.toString());
+        }
     }
 
     // MODIFIES: this

@@ -3,6 +3,8 @@ package persistence;
 import model.CapturedPokemon;
 import model.Move;
 import model.Team;
+import model.phase4.Event;
+import model.phase4.EventLog;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -29,6 +31,9 @@ public class JsonReader {
     public Team read() throws IOException {
         String jsonData = readFile(source);
         JSONObject jsonObject = new JSONObject(jsonData);
+
+        EventLog.getInstance().logEvent(new Event("Player loaded game from memory."));
+
         return parseTeam(jsonObject);
     }
 

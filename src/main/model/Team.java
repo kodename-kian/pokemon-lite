@@ -1,5 +1,7 @@
 package model;
 
+import model.phase4.Event;
+import model.phase4.EventLog;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -20,13 +22,16 @@ public class Team {
     // EFFECTS: adds a Pokemon to team
     public void addPokemon(CapturedPokemon p) {
         team.add(p);
+        EventLog.getInstance().logEvent(new Event(p.getDisplayName() + " has joined the team!"));
     }
 
     // REQUIRES: index < getTeamSize() : input sanitized in ui to satisfy requirement
     // MODIFIES: this
     // EFFECTS: removes a Pokemon from team given index
     public void removePokemon(int index) {
+        CapturedPokemon temp = team.get(index);
         team.remove(index);
+        EventLog.getInstance().logEvent(new Event(temp.getDisplayName() + " has been set free!"));
     }
 
     public CapturedPokemon getPokemon(int index) {

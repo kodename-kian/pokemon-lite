@@ -1,5 +1,8 @@
 package model;
 
+import model.phase4.Event;
+import model.phase4.EventLog;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -51,6 +54,8 @@ public class Pokemon {
     // EFFECTS: adds move to list of moves
     public void learnMove(Move m) {
         this.moves.add(m);
+        EventLog.getInstance().logEvent(
+                new Event(this.getDisplayName() + " learned " + m.getDisplayName() + "!"));
     }
 
     // EFFECTS: returns a new CapturedPokemon object

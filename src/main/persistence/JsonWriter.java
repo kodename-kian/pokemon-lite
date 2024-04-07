@@ -1,6 +1,8 @@
 package persistence;
 
 import model.Team;
+import model.phase4.Event;
+import model.phase4.EventLog;
 import org.json.JSONObject;
 
 import java.io.File;
@@ -33,6 +35,8 @@ public class JsonWriter {
     public void write(Team team) {
         JSONObject json = team.toJson();
         saveToFile(json.toString(TAB));
+
+        EventLog.getInstance().logEvent(new Event("Player saved game to memory."));
     }
 
     // MODIFIES: this
