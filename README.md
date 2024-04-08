@@ -101,4 +101,6 @@ Nidoran has been set free!
 Mon Apr 08 02:18:58 PDT 2024
 Player saved game to memory.
 ```
+*Note that due to the randomized nature of Pokemon and Move generation,*
+*the **exact** values of the sample log cannot easily be recreated.*
 ### Task 3
