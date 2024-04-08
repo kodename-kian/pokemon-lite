@@ -44,3 +44,61 @@ the finished product and find much enjoyment from it.
 #### Art Credits
 - Pallet Town art: taken from https://www.youtube.com/watch?v=Vr32Us59Zv4
 - Pokemon Encounter art: own work using *ibisPaint X*
+## Phase 4
+### Task 2
+This sample sequence of user actions during gameplay: 
+> Load Game > Encounter Pokemon_1 > Flee Encounter > Encounter Pokemon_2 > Catch Pokemon_2 > 
+> Team Menu > Teach Pokemon_2 New Move > Encounter Pokemon_3 > Catch Pokemon_3 > Team Menu >
+> Release Pokemon_3 > Save Game
+
+May produce the following log:
+
+```
+APP CLOSING... PRINTING SESSION LOG:
+
+Mon Apr 08 02:18:22 PDT 2024
+Player loaded game from memory.
+
+Mon Apr 08 02:18:25 PDT 2024
+Player encountered a wild Growlithe!
+
+Mon Apr 08 02:18:25 PDT 2024
+Growlithe learned Grass Punch!
+
+Mon Apr 08 02:18:25 PDT 2024
+Growlithe learned Fire Tackle!
+
+Mon Apr 08 02:18:29 PDT 2024
+Player encountered a wild Krabby!
+
+Mon Apr 08 02:18:29 PDT 2024
+Krabby learned Dark Slam!
+
+Mon Apr 08 02:18:29 PDT 2024
+Krabby learned Fire Rush!
+
+Mon Apr 08 02:18:33 PDT 2024
+Krabby has joined the team!
+
+Mon Apr 08 02:18:40 PDT 2024
+Krabby learned Electric Beam!
+
+Mon Apr 08 02:18:45 PDT 2024
+Player encountered a wild Nidoran!
+
+Mon Apr 08 02:18:45 PDT 2024
+Nidoran learned Flying Rush!
+
+Mon Apr 08 02:18:45 PDT 2024
+Nidoran learned Psychic Slash!
+
+Mon Apr 08 02:18:47 PDT 2024
+Nidoran has joined the team!
+
+Mon Apr 08 02:18:54 PDT 2024
+Nidoran has been set free!
+
+Mon Apr 08 02:18:58 PDT 2024
+Player saved game to memory.
+```
+### Task 3
