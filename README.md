@@ -39,13 +39,13 @@ the finished product and find much enjoyment from it.
 *(remove an X from Y)*.
 - You can locate my visual component by selecting **"Encounter Pokemon"** on the main window.
 - You can save the state of my application by selecting **"Save Game"** on the main window.
-- You can reload the state of my application by selecting **"Load Game"** on the main widnow.
+- You can reload the state of my application by selecting **"Load Game"** on the main window.
 
 #### Art Credits
 - Pallet Town art: taken from https://www.youtube.com/watch?v=Vr32Us59Zv4
 - Pokemon Encounter art: own work using *ibisPaint X*
 ## Phase 4
-### Task 2
+### Phase 4: Task 2
 This sample sequence of user actions during gameplay: 
 > Load Game > Encounter Pokemon_1 > Flee Encounter > Encounter Pokemon_2 > Catch Pokemon_2 > 
 > Team Menu > Teach Pokemon_2 New Move > Encounter Pokemon_3 > Catch Pokemon_3 > Team Menu >
@@ -103,4 +103,34 @@ Player saved game to memory.
 ```
 *Note that due to the randomized nature of Pokemon and Move generation,*
 *the **exact** values of the sample log cannot easily be recreated.*
-### Task 3
+### Phase 4: Task 3
+By studying my UML class diagram, I was able to notice a number of areas
+which could be refactored if I were to spend time improving the design of my program.
+
+To start, I noticed there was a significant amount of coupling between my `Team` model and the
+GUI classes `MainWindow` and `PersistenceManager`. With the UML association arrows forming a 'triangle',
+we know that coupling is not a good design practice, and so I would definitely look into refactoring these classes. 
+One way I could think of doing this is through passing a reference around as a parameter 
+instead of storing it as a field, removing an arrow and 'breaking' the coupling.
+
+Additionally, in connection to the `PersistenceManager`, another change I'd
+like to make involves my old console UI classes. When designing the console UI, I had the `Game` class associate
+directly with `JsonReader` and `JsonWriter`. However, when I got to Phase 3, I created a `PersistenceManager` for the
+GUI, abstracting away this behavior and reducing coupling. Hence, for the same benefits,
+I'd also like to refactor my console UI to make use of this helpful manager class.
+
+Next, in designing the UML diagram, I also noticed that I had some inconsistencies in my design. For example,
+with my `Listeners`, some would hold direct references to objects (and hence have associations), while others
+would only hold index values (and hence have a dependency which doesn't reflect on the UML). Though not much
+would end up changing performance-wise, determining a consistent convention would definitely be a positive change 
+for the code.
+
+Another area of inconsistency involves my GUI. When adding panels to the main frame, most of the time,
+I instantiate new panels during run-time. This results in dependencies which don't reflect in the diagram, making it
+harder to understand how the different components of the GUI interact with each other. Refactoring by declaring 
+ fields will make these implied aggregations explicit, which would make the UML diagram clearer
+and more helpful.
+
+Lastly, looking back, there were definitely some areas in my code where I now realize design patterns would
+be very helpful. Using the `Singleton` pattern on my `Generator`, or applying the `Iterator` pattern for my `Team`,
+for example, would bring about significant quality-of-life improvements, making it a lot easier to maintain the project.
